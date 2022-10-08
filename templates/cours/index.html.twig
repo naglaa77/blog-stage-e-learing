@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CoursController!{% endblock %}
+
+{% block body %}
+<style>
+.grid-wrapper{
+			--auto-grid-min-size: 30rem;
+			display: grid;
+			grid-gap: 2rem;
+			grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+
+		}
+.grid-wrapper li{
+			background-color: #ef4444;
+			color: #ffffff;
+			font-size: 1rem;
+			list-style-type: none;
+			text-align: center;
+			text-transform: capitalize;
+      padding-top: 2%;
+      padding-bottom: 5%;
+    }
+.main-container{
+			margin: 0 auto;
+			max-width: 1170px;
+			padding:2rem 1rem;
+		}
+
+
+a {text-decoration: none!important;}
+
+h4 { 
+color: gray;
+}
+
+p {
+  color: gray;
+}
+
+        
+section#cours1 h3 {padding-top: 3rem; text-align: center;}
+
+#card-s {
+	background-color: white;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	text-align: center;
+	border-radius: 30px;
+	padding: 1rem;
+	transition: 1s box-shadow;
+	position: relative;
+  width: 30rem;
+  height: 12rem;
+  margin: auto;
+    
+  }
+
+#card-s:hover {
+	box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+}
+
+
+#card-s img {
+	filter: grayscale();
+  }
+#card-s:hover img {
+	filter: none;
+  }
+section#cours1 div#cours h1 {font-size: 1.5rem; font-weight: bold; color: var(--turquoise); padding-bottom: 1rem;}
+div.col-7 {
+    padding-top:1.3rem;
+}
+.space {
+	margin-top: 0.5rem;
+}
+#title {
+	padding-top: 2%;
+	padding-bottom: 2%;
+	display: grid;
+	grid-template-columns: 30px 250px auto;
+	grid-gap: 1.5rem;
+	color: #203191ff;
+}
+#title a{
+	color: #203191ff;
+	font-size: 1.2rem;
+}
+#title a:hover{
+	color: var(--fuchsia);
+}
+</style>
+<section id="topindex" >
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                 <li class="breadcrumb-item"><a href="/Accueil.html">Accueil</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">Courses</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+   
+
+
+<h3 class="titre-perso container mt-4">
+  Catalogue des cours
+</h3>
+
+<!-- Web et Codage Section -->
+
+<div id="title" class="container">
+    <div class="space">
+      <i class="fa fa-connectdevelop fa-lg"></i>
+    </div>
+
+    <div class="space">
+      <a href="/Web&Codage.html"><h4 >Web et Codage</h4></a>
+    </div>
+
+    <div >
+      <hr >
+    </div>
+</div>
+
+    <section id="cours1">
+		<div class="main-container">
+			<ul class="grid-wrapper">
+      {% for cours in courss %}
+        {% if cours.type.titleT is same as ('Web et Codage') %}
+          <a href={{ path('cours_show', {'slugC' : cours.slugC}) }}>
+              <li id="card-s" class="row">
+                  <img class="col-4" src="{{ cours.imageC }}" alt="Cours" style="width:40%">
+                  <div class="col-7">    
+                      <h4>{{ cours.titleC }}</h4>
+                      <p>{{ cours.descriptionC }}</p>
+                  </div>
+              </li>
+          </a>
+        {% endif %}
+      {% endfor %}
+			</ul>
+		</div>
+	</section>
+
+<!-- Microsoft Office App -->
+
+<div id="title" class="container">
+    <div class="space">
+      <i class="fa fa-desktop fa-lg"></i>
+    </div>
+
+    <div class="space">
+      <a href="/Web&Codage.html"><h4 >Microsoft Office App</h4></a>
+    </div>
+
+    <div >
+      <hr >
+    </div>
+</div>
+
+    <section id="cours1">
+		<div class="main-container">
+			<ul class="grid-wrapper">
+      {% for cours in courss %}
+        {% if cours.type.titleT is same as ('Microsoft Office') %}
+          <a href={{ path('cours_show', {'slugC' : cours.slugC}) }}>
+              <li id="card-s" class="row">
+                  <img class="col-4" src="{{ cours.imageC }}" alt="Cours" style="width:40%">
+                  <div class="col-7">    
+                      <h4>{{ cours.titleC }}</h4>
+                      <p>{{ cours.descriptionC }}</p>
+                  </div>
+              </li>
+          </a>
+        {% endif %}
+      {% endfor %}
+			</ul>
+		</div>
+	</section>
+
+<!-- Data Analysis -->
+
+<div id="title" class="container">
+    <div class="space">
+      <i class="fa fa-table fa-lg"></i>
+    </div>
+
+    <div class="space">
+      <a href="/Web&Codage.html"><h4 >Data Analysis</h4></a>
+    </div>
+
+    <div >
+      <hr >
+    </div>
+</div>
+
+    <section id="cours1">
+		<div class="main-container">
+			<ul class="grid-wrapper">
+      {% for cours in courss %}
+        {% if cours.type.titleT is same as ('Data Analysis') %}
+          <a href={{ path('cours_show', {'slugC' : cours.slugC}) }}>
+              <li id="card-s" class="row">
+                  <img class="col-4" src="{{ cours.imageC }}" alt="Cours" style="width:40%">
+                  <div class="col-7">    
+                      <h4>{{ cours.titleC }}</h4>
+                      <p>{{ cours.descriptionC }}</p>
+                  </div>
+              </li>
+          </a>
+        {% endif %}
+      {% endfor %}
+			</ul>
+		</div>
+	</section>
+
+{% endblock %}

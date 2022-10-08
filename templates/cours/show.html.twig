@@ -1,0 +1,248 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CoursController!{% endblock %}
+
+{% block body %}
+<style>
+:root{
+	scroll-behavior: smooth;
+	--dpurple: #203191ff;
+    --turquoise: #36a4a3ff;
+    --lpurple: #7457b5ff;
+    --fuchsia: #c45aeeff;
+    --light: #f2f0f8ff;
+    --true:#6CB24F;
+    --false: #F25151;
+}
+h3 {
+	margin-top: 2rem;
+	font-size: 2.5rem;
+}
+h4 {
+	font-size: 1.5rem;
+	color: var(--turquoise)!important;
+}
+h5 {
+	margin-top: 1rem;
+	font-size: 1rem;
+}
+
+
+/* cours-button */
+#cours-button {
+	margin-top: 2rem;
+}
+
+
+#second-card {
+	display: grid;
+	grid-template-columns: 60% 40%;
+	grid-gap: 5rem;
+	padding-bottom: 1rem;
+	
+}
+#third-card {
+	display: grid;
+	grid-template-columns: 50% 30%;
+	grid-gap: 7rem;
+	padding-bottom: 3rem;
+	padding-top: 2rem;
+	
+}
+section#drop .accordion-button:focus {
+    border-color: var(--dpurple);
+    box-shadow: none;
+}
+section#drop .accordion-button:not(.collapsed) {
+    color: var(--dpurple);
+    background-color: var(--light);
+}
+
+.btn-secondary {
+    background-color: var(--fuchsia);
+}
+
+#detail {
+	display: grid;
+	grid-template-columns: 15% 30%;
+	grid-gap: 0rem;
+	padding-top: 0.7rem;
+	color: #707070;
+}
+
+#fourth-card {
+	display: grid;
+	grid-template-columns: 45% 55%;
+	grid-gap: 10rem;
+	padding-bottom: 3rem;
+	padding-top: 2rem;
+	
+}
+
+.bg-primary {
+	background-color: var(--dpurple) !important;
+}
+
+.colo {
+	background-color: var(--light);
+}
+.col-md-6 {
+    padding-right: 2rem;
+}
+</style>
+
+
+<section id="topindex" >
+<div class="container">
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Accueil.html">Accueil</a></li>
+    <li class="breadcrumb-item"><a href="/Cours.html">Courses</a></li>
+    <li class="breadcrumb-item"><a href="/Web&Codage.html">{{ cours.type }}</a></li>
+    <li class="breadcrumb-item active" aria-current="page">{{ cours.titleC }}</li>
+  </ol>
+</nav>
+</div>
+
+</section>
+   
+{# Intro #}
+<section id="second-card" class="container">
+<div>
+<h3 class="titre-perso">
+{{ cours.titleC }}
+</h3>
+<h5>{{ cours.descriptionC }}</h5 >
+</div>
+
+<div id="cours-button" class="text-center p-3" >
+<a href="{{ cours.link1C }}">
+  <button class="btn btn-secondary" type="submit">Commencer le cours</button>
+</a>
+</div>
+<br><br>
+</section>
+
+{# First Part #}
+<section  class="container">
+  <div class="row">
+  <div class="col-md-6">
+  <h4 class="titre-perso">
+    À propos de ce cours
+  </h4>
+  <h5>{{ cours.aboutC | markdown_to_html }}</h5 >
+
+  </div>
+
+  <div  class="col-6" >
+    <iframe width="560" height="315" src="{{ cours.link2C }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
+</div>
+  </section>
+
+
+{# Second Part #}
+<section id="third-card" class="container ">
+  <div >
+    <section id="drop">
+      <div >
+          <div class="accordion " id="accordionExample">
+{# ------ #}
+              <div class="accordion-item">
+              <h4 class="accordion-header titre-perso" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Modules 01
+                  </button>
+              </h4>
+              <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>{{ cours.modules1 }}</p>
+                  </div>
+              </div>
+              </div>
+{# ------ #}
+              <div class="accordion-item">
+              <h4 class="accordion-header titre-perso" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Modules 02
+                  </button>
+              </h4>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>{{ cours.modules2 }}</p>  
+                  </div>
+              </div>
+              </div>
+{# ------ #}
+              <div class="accordion-item">
+              <h4 class="accordion-header titre-perso" id="headingThree">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Modules 03
+                  </button>
+              </h4>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                  <div class="accordion-body">
+                    <p>{{ cours.modules3 }}</p>
+                  </div>
+              </div>
+              </div>
+{# ------ #}
+              <div class="accordion-item">
+                <h4 class="accordion-header titre-perso" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                      Modules 04
+                    </button>
+                </h4>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <p>{{ cours.modules4 }}</p>                
+                    </div>
+                </div>
+                </div>
+    
+          </div>     
+      </div>
+    </section>
+  </div>
+{# ------ #}
+  <div >
+    <h4 class="titre-perso">
+      Détails du cours
+    </h4>
+    <br>
+
+    <div id="detail">
+      <i class="fa fa-bookmark fa-lg"></i>
+      <h6 >Modules: {{ cours.modulesN|length }}</h6>
+    </div>
+
+    <div id="detail">
+      <i class="fa fa-pagelines fa-lg"></i>
+      <h6 >{{ cours.levelC }}</h6>
+    </div>
+
+    <div id="detail">
+      <i class="fas fa-calendar-o fa-lg"></i>
+      <h6 >Heures : {{ cours.durationC }}</h6>
+    </div>
+
+    <div id="detail">
+      <i class="fa fa-money fa-lg"></i>
+      <h6>{{ cours.costC }}</h6>
+    </div>
+
+    <div id="detail">
+      <i class="fa fa-certificate fa-lg"></i>
+      <h6 >{{ cours.CertificateC }}</h6>
+    </div>
+
+
+
+  </div>
+
+  
+</section>
+
+{% endblock %}

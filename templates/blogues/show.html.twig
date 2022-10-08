@@ -1,0 +1,119 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BloguesController!{% endblock %}
+
+{% block body %}
+<style>
+img.col-4 { height:15rem;}
+.commenter-name {
+  padding-top:0.5rem;
+  font-size: 1.5rem;
+  color: #7457b5;
+}
+.date {
+  font-size: 0.8rem;
+  color: gray;
+}
+.author {
+  font-size: 1.2rem;
+  color: #7457b5;
+}
+.comment{
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+}
+</style>
+
+<section>
+
+  <div class="container">
+        <div class="row">
+            <div class="bg-light mt-10 p-4">
+            <div class="row">
+                <h1 class="col-10 float-start">{{ article.title }}</h1>
+            </div>
+
+              <br>
+              
+            <div class="row">
+              <div class="col-8 ">{{ article.body | markdown_to_html }}</div>
+                <img class="col-4 " src="{{ article.image }}" alt="Cours" >
+              </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section>
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+        <br>
+            <h4><i class="pr-2 fa fa-comment"></i> Comments <span style="font-size:1.2rem;">({{ article.comments|length }})</span></h4>
+            <hr>
+
+            {# <div class="">
+                <div class="row">
+                        <h4 class="col-1 commenter-name">{{ app.user.prenom }}</h4>
+                        <div class="col-9 form-group">
+                            <textarea class="form-control comment-form" id="articleText" rows="1"></textarea>
+                        </div>
+                        <button type="submit" class="col-2 btn btn-secondary">Comment</button>
+                </div>
+            </div> #}
+<br>
+            {% for comment in article.Comments %}
+                <div class="row">
+                        <div >
+                        <small class="author"> {{ comment.authorCom }}</small> <small class="date">({{ comment.createdatCom | date('Y-m-d') }} environ {{ comment.createdatCom | date('H:i') }})</small>
+                        </div>
+                        <div class=" m-1"><span class="comment "> {{ comment.contentCom | markdown_to_html }}</span>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+  </div>
+
+{% if not app.user %}
+<div class="container">
+    <div class="row">
+        <div class="bg-light mt-10 p-4">
+            <h4>Pour publier des commentaires, vous devez créer un compte.</h4>
+            <a class="btn btn-secondary" href="{{path('app_login')}}">S'identifier</a>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="container">
+    <div class="row">
+        <div class="bg-light mt-10 p-4">
+            <h4>Ajoutez votre commentaire:</h4>
+            {{ form_start(commentForm) }}
+                {{ form_row(commentForm.authorCom, {
+                        label: 'Nom:'
+                    }) }}
+                {{ form_row(commentForm.ContentCom, {
+                        label: 'Votre comment:'
+                    }) }}
+            {{ form_widget(commentForm) }}
+
+                    <button type="submit" class="btn btn-secondary">Comment</button>
+
+            {{ form_end(commentForm) }}
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+
+</section>
+
+<br><br>
+
+
+{% endblock %}

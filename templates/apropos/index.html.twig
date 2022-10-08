@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AproposController!{% endblock %}
+
+{% block body %}
+<style>
+
+:root {
+    --lpurpul: #7457b5ff;
+    --turquoise: #36a4a3ff;
+    --orange: hsl(34, 97%, 64%);
+    --blfuchsiaue: #203191ff;
+    --varyDarkBlue: hsl(234, 12%, 34%);
+    --grayishBlue: hsl(229, 6%, 66%);
+    --veryLightGray: hsl(0, 0%, 98%);
+    --weight1: 200;
+    --weight2: 400;
+    --weight3: 600;
+}
+
+
+h1:first-of-type {
+    font-weight: var(--weight1);
+    color: var(--varyDarkBlue);
+
+}
+
+h1:last-of-type {
+    color: var(--varyDarkBlue);
+}
+
+@media (max-width: 400px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+}
+
+
+.box p {
+    color: var(--grayishBlue);
+}
+
+.box {
+    border-radius: 5px;
+    box-shadow: 0px 30px 40px -20px var(--grayishBlue);
+    padding: 30px;
+    margin: 20px;  
+}
+
+img {
+    float: right;
+}
+
+@media (max-width: 450px) {
+    .box {
+        height: 200px;
+    }
+}
+
+@media (max-width: 950px) and (min-width: 450px) {
+    .box {
+        text-align: center;
+        height: 180px;
+    }
+}
+
+.turquoise {
+    border-top: 3px solid var(--turquoise);
+}
+.lpurpul {
+    border-top: 3px solid var(--lpurpul);
+}
+.fuchsia {
+    border-top: 3px solid var(--fuchsia);
+}
+.orange {
+    border-top: 3px solid var(--orange);
+}
+
+h2 {
+    color: var(--varyDarkBlue);
+    font-weight: var(--weight3);
+}
+
+
+@media (min-width: 950px) {
+    .row1-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .row2-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .box-down {
+        position: relative;
+        top: 150px;
+    }
+    .box {
+        width: 20%;
+     
+    }
+    .header p {
+        width: 30%;
+    }
+    
+}
+</style>
+
+<section id="topindex" >
+<div class="container">
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/Accueil.html">Accueil</a></li>
+    <li class="breadcrumb-item active" aria-current="page">À propos
+
+    </li>
+  </ol>
+</nav>
+</div>
+
+</section>
+   
+
+{# --------- #}
+
+
+<div class="row1-container">
+  <div class="box box-down turquoise">
+    <h2>Service</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
+    <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+  </div>
+
+  <div class="box lpurpul">
+    <h2>Notre mission</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
+    <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
+  </div>
+
+  <div class="box box-down fuchsia">
+    <h2>Qui nous sommes?</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
+    <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
+  </div>
+</div>
+<div class="row2-container">
+  <div class="box orange">
+    <h2>Notre Vision</h2>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
+    <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
+  </div>
+</div>
+
+{% endblock %}

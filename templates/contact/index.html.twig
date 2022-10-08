@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContactController!{% endblock %}
+
+{% block body %}
+<br>
+<div class="container">
+    <div class="row">
+        <div class="bg-light mt-10 p-4">
+            <h1>Contactez-nous</h1>
+            {{ form_start(our_form) }}
+                {{ form_row(our_form.nomContact, {
+                        label: 'Nom:'
+                    }) }}
+                {{ form_row(our_form.emailContact, {
+                        label: 'Email:'
+                    }) }}
+                {{ form_row(our_form.messageContact, {
+                        label: 'Votre message:'
+                    }) }}
+            {{ form_widget(our_form) }}
+
+            {# <input class="btn btn-lg cta-perso-couleur" type="submit" value="Send" /> #}
+                    <button type="submit" class="btn btn-primary">Envoyez</button>
+
+            {{ form_end(our_form) }}
+        </div>
+    </div>
+</div>
+<br>
+
+{% endblock %}

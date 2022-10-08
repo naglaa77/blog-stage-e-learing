@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RessourcesController!{% endblock %}
+
+{% block body %}
+{# <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style> #}
+
+<section id="topindex" >
+<div class="container">
+
+
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Ressources
+
+    </li>
+  </ol>
+</nav>
+</div>
+
+</section>
+   
+
+{# ---- #}
+
+
+<section id="contact">
+  <div class="container">
+
+      <h3 class="titre-perso"> Ressources & Références</h3>
+      <div class="accordion" id="accordionExample">
+{# ---- #}
+
+          <div class="accordion-item">
+          <h4 class="accordion-header titre-perso" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Software & Trials
+              </button>
+          </h4>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body"><ul>
+                  {% for ressources in ressourcess %}
+                  {% if ressources.topic.titleTop is same as ('Software') %}
+                    <li><a href="{{ ressources.linkRes }}">- {{ ressources.titleRes }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+          </div>
+          </div>
+{# ---- #}
+          <div class="accordion-item">
+          <h4 class="accordion-header titre-perso" id="headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              Case Studies
+              </button>
+          </h4>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  {% for ressources in ressourcess %}
+                  {% if ressources.topic.titleTop is same as ('Case Studies') %}
+                      <li><a href="{{ ressources.linkRes }}">- {{ ressources.titleRes }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>  
+              </div>
+          </div>
+          </div>
+{# ---- #}
+
+          <div class="accordion-item">
+          <h4 class="accordion-header titre-perso" id="headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Brochures
+              </button>
+          </h4>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <ul>
+                  {% for ressources in ressourcess %}
+                  {% if ressources.topic.titleTop is same as ('Brochures') %}
+                      <li><a href="{{ ressources.linkRes }}">- {{ ressources.titleRes }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul> 
+              </div>
+          </div>
+          </div>
+{# ---- #}
+          <div class="accordion-item">
+            <h4 class="accordion-header titre-perso" id="headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                Datasheets
+                </button>
+            </h4>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                <ul>
+                  {% for ressources in ressourcess %}
+                  {% if ressources.topic.titleTop is same as ('Datasheets') %}
+                      <li><a href="{{ ressources.linkRes }}">- {{ ressources.titleRes }}</a></li>
+                  {% endif %}
+                  {% endfor %}
+                </ul>             
+                  </div>
+            </div>
+            </div>
+
+      </div>     
+  </div>
+</section>
+
+
+{% endblock %}
+

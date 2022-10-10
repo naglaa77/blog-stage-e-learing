@@ -3,58 +3,55 @@
 {% block title %}Hello AccueilController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { padding: 2px 6px; }
-</style>
 
-{# First section #}
-   <section id="slide1">
-        <div class="container">
-          
-            <article class="row g-2">
-              
-                <div class="col-md-4">
+
+<div class ="container">
+   
+    {# First section #}
+     <section id="slide1"   style="margin-top:50px;margin-bottom:50px;padding-bottom:60px" >
+        
+                <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
+                
+                    <div class="col-md-6" style="display:flex;justify-content:center;align-items:center;flex-direction:column">
                         <h2>Pour construire & améliorer</h2>
-                        <p>vos compétences techniques</p>
-                      <div>
-                         <button type="button" class="btn btn-lg cta-perso-couleur">
-                          <a href="/Blogues.html">Commencez maintenant</a></b></button>                
-                      </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="../build/img/slide.jpg" alt="" class="col-6">
-                </div>
-            </article>  
-        </div>
-    </section>
+                        <p class="mb-5">vos compétences techniques</p>
+                        <div>
+                            <button type="button" class="btn btn-lg btn btn-success btn-lg mt-7">
+                            <a href="/Blogues.html" class="nav-link" style="color:white">Commencez maintenant</a></b></button>                
+                        </div>
+                    </div>
+                    
+                        <img style="max-width:100%" src="../build/img/slide1.jpg" alt="" class="col-6 ">
+                  
+                </article>  
+     </section>
 
 {# Second Section #}
 
-    <section id="galerie">
-        <div class="container">
-            <article class="row g-2">
-                <img src="../build/img/slid3.jpg" alt="" class="col-6">
-                <div class="col">
-                        <h3>Un pessimiste voit la difficulté dans chaque opportunité, un optimiste  voit l’opportunité dans chaque  difficulté.</h3>
+    <section id="galerie" class=" " class="fu" style="margin-top:50px; margin-bottom: 50px;background-color: #efebf4; border-radius:20px" >
+        
+            <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
+                 <img style="max-width:100%" src="../build/img/slide2.webp" alt="" class="col-6 rounded mx-auto d-block img-fluid">
+                <div class="col-6" style="display:flex;justify-content:center;align-items:center;">
+                  <h3 style="width:70%;color:#403a3a;font-weight:400;font-size:20px;line-height:1.6">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</h3>
                 </div>
             </article>              
-        </div>
+        
     </section>
 
 
 {# Third Section #}
 
 
-    <section id="slide2">
+    <section style="margin-top:50px;margin-bottom:50px;padding-bottom:60px"  id="slide2">
         
         <div class="container">
-            <article class="row g-2">
+            <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
                 
-                <div class="col">
-                    <h3>Un pessimiste voit la difficulté dans chaque opportunité, un optimiste  voit l’opportunité dans chaque  difficulté.</h3>
+                <div style="display:flex;justify-content:center;align-items:center;"class="col">
+                    <h3 style="width:70%;color:#403a3a;font-weight:400;font-size:20px;line-height:1.6">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</h3>
                 </div>
-                <img src="../build/img/slide2.jpg" alt="" class="col-6">
+                <img style="max-width:100%"src="../build/img/slid3.jpg" alt="" class="col-6 ">
             </article>              
         </div>
     </section>
@@ -63,23 +60,23 @@
 {# Section Blogs #}
 
 
-<section id="blogs" class="fu">
-    <h3 class="titre-perso container">
+<section id="blogs" class="fu" style="margin-top:50px; margin-bottom: 50px;background-color: #efebf4; border-radius:20px">
+    <h3 class="text-center" style="font-size:35px; font-weight:bold;margin: 50px;color:#693199;padding-top:20px">
         Derniers Blogs
     </h3>
-<div id="blog" class="container">
-{% for article in latestArticles %}
-      <div id="cardb">
-      <a href={{ path('blogues_show', {'slug' : article.slug}) }}>
-        <img src="{{ article.image }}" alt="Cours" style="width:100%">
-        <h1>{{ article.title }}</h1>
-        <h6>{{ article.createdAt | date('Y-m-d') }}</h6>
-        <div id="blue"></div>
-        </a>
-      </div>
-{% endfor %}
+    <div id="blog" class="container d-flex flex-sm-column flex-md-row justify-content-between">
+    {% for article in latestArticles %}
+        <div id="cardb" class="col-4  "style="width: 30%;">
+        <a  class="nav-link" style="color:black;" href={{ path('blogues_show', {'slug' : article.slug}) }}>
+            <img class="rounded" src="{{ article.image }}" alt="Cours" style="width:100% ;height: 250px">
+            <h1 style="font-size:20px; margin-top: 20px;color:#403a3a">{{ article.title }}</h1>
+            <h6 style="color:#a49d9d">{{ article.createdAt | date('Y-m-d') }}</h6>
+            <div id="blue"></div>
+            </a>
+        </div>
+    {% endfor %}
 
-</div>
+    </div>
 </section>
 
 {# Section Courses #}
@@ -106,5 +103,7 @@
 		</ul></div>
 
 	</section>
+
+</div>
 
 {% endblock %}

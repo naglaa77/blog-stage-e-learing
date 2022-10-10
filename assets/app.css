@@ -68,10 +68,10 @@ a, a:hover, a:visited, a:active {
 	--dpurple: #203191ff;
     --turquoise: #36a4a3ff;
     --lpurple: #7457b5ff;
-    --fuchsia: #c45aeeff;
+    --fuchsia: rgb(216, 240, 232);
     --light: #f2f0f8ff;
     --true:#6CB24F;
-    --false: #F25151;
+    --false: #e9b4b4;
 }
 a {text-decoration: none!important;}
 
@@ -232,6 +232,7 @@ section#slide2 div div{
 section#slide2 div div img{
 	height: 100%;
 	object-fit: cover;
+
 }
 section#slide2 div .carousel-indicators [data-bs-target] {
 	/* align-self: flex-end; */

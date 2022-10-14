@@ -1,0 +1,40 @@
+.card {
+  height: 24rem;
+  border-radius: 7px;
+  box-shadow: 3px 3px 4px #d7d3d3;
+  position: relative;
+  width: 100%;
+}
+.card-title {
+  font-size: 1rem;
+}
+.titre-perso {
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  width: fit-content;
+  border-radius: 10px;
+  padding: 5px 50px;
+}
+#cardbase {
+  height: 100%;
+}
+.card-text {
+  font-size: 0.92rem;
+  color: #69636afa;
+}
+.card-img-top {
+  height: 51%;
+}
+.btn-primary {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 1rem;
+  display: block;
+  width: 26%;
+  margin: auto;
+  margin-bottom: 0;
+  border-radius: 17px;
+  font-size: 14px;
+}

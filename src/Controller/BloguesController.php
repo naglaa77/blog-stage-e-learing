@@ -45,7 +45,7 @@ class BloguesController extends AbstractController
     {
  
         $categorys = $article->getCategory();
-        $comment = new Comment();
+        $comment = new Comment($article);
         $form = $this->createForm(CommentType::class, $comment);
         $form->handleRequest($request);
 

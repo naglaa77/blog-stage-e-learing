@@ -69,6 +69,12 @@ img.col-4 { height:15rem;}
                         <small class="author"> {{ comment.authorCom }}</small> <small class="date">({{ comment.createdatCom | date('Y-m-d') }} environ {{ comment.createdatCom | date('H:i') }})</small>
                         </div>
                         <div class=" m-1"><span class="comment "> {{ comment.contentCom | markdown_to_html }}</span>
+                        {# {% if  app.user  %}
+                          {% if  comment.authorCom  %}
+                        <button> edit</button>
+                        <button> delet</button>
+                          {%endif%}
+                        {%endif%} #}
                     </div>
                 </div>
             {% endfor %}

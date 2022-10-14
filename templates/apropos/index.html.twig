@@ -48,19 +48,27 @@ h1:last-of-type {
 }
 
 img {
-    float: right;
+    display: block;
+    margin-left: auto;
+    width:50px;
+    height:50px;
 }
 
 @media (max-width: 450px) {
     .box {
-        height: 200px;
+        height: auto;
+        margin-bottom: 4rem;
     }
+img {
+    width:30px;
+    height: 30px;
+}
 }
 
 @media (max-width: 950px) and (min-width: 450px) {
     .box {
         text-align: center;
-        height: 180px;
+        height: 200px;
     }
 }
 
@@ -71,7 +79,7 @@ img {
     border-top: 3px solid var(--lpurpul);
 }
 .fuchsia {
-    border-top: 3px solid var(--fuchsia);
+    border-top: 3px solid var(--blfuchsiaue);
 }
 .orange {
     border-top: 3px solid var(--orange);
@@ -111,19 +119,16 @@ h2 {
 </style>
 
 <section id="topindex" >
-<div class="container">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/Accueil.html">Accueil</a></li>
+                <li class="breadcrumb-item active" aria-current="page">À propos
 
-
-<nav aria-label="breadcrumb">
-  <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="/Accueil.html">Accueil</a></li>
-    <li class="breadcrumb-item active" aria-current="page">À propos
-
-    </li>
-  </ol>
-</nav>
-</div>
-
+                </li>
+            </ol>
+        </nav>
+    </div>
 </section>
    
 
@@ -134,26 +139,26 @@ h2 {
   <div class="box box-down turquoise">
     <h2>Service</h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
-    <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="">
+    <img src="https://assets.codepen.io/2301174/icon-supervisor.svg" alt="icon">
   </div>
 
   <div class="box lpurpul">
     <h2>Notre mission</h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
-    <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="">
+    <img src="https://assets.codepen.io/2301174/icon-team-builder.svg" alt="icon">
   </div>
 
   <div class="box box-down fuchsia">
     <h2>Qui nous sommes?</h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
-    <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="">
+    <img src="https://assets.codepen.io/2301174/icon-calculator.svg" alt="icon">
   </div>
 </div>
 <div class="row2-container">
   <div class="box orange">
     <h2>Notre Vision</h2>
     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Corrupti tempora at magnam similique, natus labore explicabo facere itaque aspernatur sequi </p>
-    <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="">
+    <img src="https://assets.codepen.io/2301174/icon-karma.svg" alt="icon">
   </div>
 </div>
 

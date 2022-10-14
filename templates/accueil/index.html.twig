@@ -8,54 +8,48 @@
 <div class ="container">
    
     {# First section #}
-     <section id="slide1"   style="margin-top:50px;margin-bottom:50px;padding-bottom:60px" >
-        
-                <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
-                
-                    <div class="col-md-6" style="display:flex;justify-content:center;align-items:center;flex-direction:column">
-                        <h2>Pour construire & améliorer</h2>
-                        <p class="mb-5">vos compétences techniques</p>
-                        <div>
-                            <button type="button" class="btn btn-lg btn btn-success btn-lg mt-7">
-                            <a href="/Blogues.html" class="nav-link" style="color:white">Commencez maintenant</a></b></button>                
-                        </div>
-                    </div>
-                    
-                        <img style="max-width:100%" src="../build/img/slide1.jpg" alt="" class="col-6 ">
-                  
-                </article>  
+     <section id="slide1" class="row" >
+            <div class=" slide-text col-sm-12 col-md-6">
+                <h1>Pour construire & améliorer</h1>
+                <p class="mb-5">vos compétences techniques</p>
+                <div class="slide1-btn">
+                    <button type="button" class=" slid1-btn btn btn-lg btn btn-success btn-lg mt-7">
+                    <a href="/Blogues.html" class="nav-link" style="color:white">Commencez maintenant</a></b></button>                
+                </div>
+            </div>
+            <div class=" col-sm-12  col-md-6">
+                <img src="https://media.istockphoto.com/vectors/office-worker-hand-working-on-laptop-computer-vector-id1307915204?k=20&m=1307915204&s=612x612&w=0&h=7eiQDy7PzmuvgvfSrtzlK2ARKGGbsZrRWOPm5YAfbS8=" alt="image section" >
+            </div>
      </section>
+</div>
+{#  Section 2 #}
 
-{# Second Section #}
-
-    <section id="galerie" class=" " class="fu" style="margin-top:50px; margin-bottom: 50px;background-color: #efebf4; border-radius:20px" >
-        
-            <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
-                 <img style="max-width:100%" src="../build/img/slide2.webp" alt="" class="col-6 rounded mx-auto d-block img-fluid">
-                <div class="col-6" style="display:flex;justify-content:center;align-items:center;">
-                  <h3 style="width:70%;color:#403a3a;font-weight:400;font-size:20px;line-height:1.6">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</h3>
-                </div>
-            </article>              
-        
-    </section>
-
-
-{# Third Section #}
-
-
-    <section style="margin-top:50px;margin-bottom:50px;padding-bottom:60px"  id="slide2">
-        
+    <section class="bg-color" >
         <div class="container">
-            <article class="row g-2 d-flex flex-sm-column flex-md-row justify-content-between">
-                
-                <div style="display:flex;justify-content:center;align-items:center;"class="col">
-                    <h3 style="width:70%;color:#403a3a;font-weight:400;font-size:20px;line-height:1.6">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</h3>
+            <div class="row">
+                <div class=" slide-div col-sm-12 col-md-6">
+                    <img  src="https://media.istockphoto.com/vectors/office-worker-hand-working-on-laptop-computer-vector-id1307915204?k=20&m=1307915204&s=612x612&w=0&h=7eiQDy7PzmuvgvfSrtzlK2ARKGGbsZrRWOPm5YAfbS8=" alt="image section" >
                 </div>
-                <img style="max-width:100%"src="../build/img/slid3.jpg" alt="" class="col-6 ">
-            </article>              
+                <div class=" slide-div col-sm-12 col-md-6">
+                    <p class="slide-p">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+                </div>
+            </div>
         </div>
     </section>
 
+
+{# Section 3 #}
+
+<div class ="container">
+    <section class="row">             
+            <div class=" slide-div  col-sm-12 col-md-6">
+                <p class="slide-p">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage</p>
+            </div>
+            <div class=" slide-div  col-sm-12 col-md-6">
+            <img src="https://media.istockphoto.com/vectors/office-worker-hand-working-on-laptop-computer-vector-id1307915204?k=20&m=1307915204&s=612x612&w=0&h=7eiQDy7PzmuvgvfSrtzlK2ARKGGbsZrRWOPm5YAfbS8=" alt="image section" >
+            </div>
+    </section>
+</div>
 
 {# Section Blogs #}
 
@@ -66,10 +60,10 @@
     </h3>
     <div id="blog" class="container d-flex flex-sm-column flex-md-row justify-content-between">
     {% for article in latestArticles %}
-        <div id="cardb" class="col-4  "style="width: 30%;">
+        <div class="cardb" class="col-sm-12 col-md-4">
         <a  class="nav-link" style="color:black;" href={{ path('blogues_show', {'slug' : article.slug}) }}>
             <img class="rounded" src="{{ article.image }}" alt="Cours" style="width:100% ;height: 250px">
-            <h1 style="font-size:20px; margin-top: 20px;color:#403a3a">{{ article.title }}</h1>
+            <h2 class="blog-h">{{ article.title }}</h2>
             <h6 style="color:#a49d9d">{{ article.createdAt | date('Y-m-d') }}</h6>
             <div id="blue"></div>
             </a>
@@ -80,7 +74,7 @@
 </section>
 
 {# Section Courses #}
-    <section id="cours1">
+<section id="cours1">
       <h3 class="titre-perso container">
       Cours de Formation
       </h3>
@@ -102,8 +96,8 @@
 {% endfor %}            
 		</ul></div>
 
-	</section>
+</section>
 
-</div>
+
 
 {% endblock %}

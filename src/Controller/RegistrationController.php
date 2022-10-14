@@ -3,25 +3,26 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Form\UserProfilType;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
-use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
+use Symfony\Component\Mime\Email;
+use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
-use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
-use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\Bundle\DoctrineBundle\Registry;
-use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use SymfonyCasts\Bundle\VerifyEmail\VerifyEmailHelperInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
+use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -94,4 +95,54 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Account Verified! You can now log in.');
         return $this->redirectToRoute('app_login');
     }
+
+
+    #[Route('/profile/{id}', name: 'profil')]
+    function profil($id,User $user,UserRepository $userRep,Request $request,EntityManagerInterface $em,UserPasswordHasherInterface $hasher) {
+     
+        if (!$this->getUser()) {
+            return $this->redirectToRoute('app_login');
+        }
+        if ($this->getUser() !== $user) {
+            return $this->redirectToRoute('app_accueil');
+        
+        }
+        
+        $profil = $userRep->find($id);
+        $form = $this->createForm(UserProfilType::class,$profil);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($hasher->isPasswordValid($user,$form->getData()->getPlainPassword())) {
+               $user = $form->getData();
+                $em->persist($user);
+                $em->flush();
+                return $this->redirectToRoute('app_accueil');
+            }else {
+                $this->addFlash(
+                    'warning',
+                    'le mot de pass est incorrect'   
+                    );
+            }
+               
+        }
+        $formView = $form->createView();
+
+        
+          return $this->render('registration/profil.html.twig', [
+            'profil' =>$profil,
+            'formView' => $formView
+        ]);
+    }
+
+  #[Route('/delete_user/{id}', name: 'delete_user')]
+    function deleteUser($id,UserRepository $userRep,Request $request,EntityManagerInterface $em) {
+     
+        $profil = $userRep->find($id);
+        $em->remove($profil);
+        $em->flush();
+        $this->addFlash('message','desabonner succes');
+        
+          return $this->redirectToRoute('app_accueil');
+    }
+
 }

@@ -12,9 +12,10 @@
     {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         <link rel="icon" type="image/png" href="../build/img/tlogo.png" />
+        <link rel="stylesheet" href="{{asset('css/accuiel.css')}}">
         <style>
                 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
-                @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css');
+                @import url('https://bootswatch.com/5/pulse/bootstrap.min.css');
         </style>
     {% endblock %}
         {% block javascripts %}
@@ -57,7 +58,7 @@
                         </li>
                     {% endif %}
                     </ul>
-                    <form class="d-flex">
+                    <form class="d-flex mr-5">
                     {# <a class="btn cta-perso" href="{{ path('app_login') }}">S'identifier</a> #}
 
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
@@ -73,7 +74,7 @@
                                     src="https://ui-avatars.com/api/?name={{ app.user.email|url_encode }}&size=32&background=random"
                                     alt="{{ app.user.prenom }} Avatar">
                             </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                            <ul class=" drop-nav dropdown-menu " aria-labelledby="dropdownMenu2">
                                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                                     <li>
                                         <a id="ddi" class="dropdown-item" href="{{ path('app_accueil', {
@@ -84,7 +85,13 @@
                                 <li>
                                     <a id="ddi" class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
                                 </li>
-                            </ul>
+                              <li>
+                                    <a id="ddi" class="dropdown-item" href="{{ path('profil',{'id':app.user.id}) }}">mon profile</a>
+                             <li>
+                                    <a id="ddi" class="dropdown-item" href="{{ path('delete_user',{'id':app.user.id}) }}">desabonner</a>
+                              </li>
+                              </li>
+                          </ul>
                         </div>
                     {% else %}
                         <a class="btn nav-link link-light cta-perso" href="{{ path('app_login') }}">S'identifier</a>

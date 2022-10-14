@@ -1,7 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello BloguesController!{% endblock %}
-
+{% block title %}blog{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="https://bootswatch.com/5/pulse/bootstrap.min.css">
+  <link rel="stylesheet" href="{{asset('css/blog.css')}}">
+{% endblock %}
 {% block body %}
 <style>
     {# .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
@@ -28,23 +31,35 @@
 
 <section id="blogs">
   <h3 class="titre-perso container">
-      Derniers Blogues
+     Blogues
   </h3>
-  <div id="blog" class="container">
-    {% for article in articles %}
-        <div id="cardb">
-          <a href={{ path('blogues_show', {'slug' : article.slug}) }}>
-          <img src="{{ article.image }}" alt="Cours" style="width:100%">
-          <h1>{{ article.title }}</h1>
-          <p>{{ article.descriptionArt }}</p>
-          {% for article in article.category %}
-                <button class="btn btn-sm m-2" type="submit">{{ article.titleCat }}</button>
-          {% endfor %}            
-          <br>
-          <div id="blue"></div>
-          </a>
+<div class="container">
+  <div class="row">
+    
+      {% for article in articles %}
+      <div  class="col-6 col-md-4 ">
+        <div id="blog" class="card " style="width: 18rem;">
+          <div id="cardbase" >
+            <img src="{{ article.image }}" alt="blog image cap" class="card-img-top" style="width:100%">
+            <div class="card-body">
+                <h3  class="card-title">{{ article.title }}</h3>
+              <p class="card-text">{{ article.descriptionArt }}</p>
+              {% for article in article.category %}
+                    <button class="btn btn-sm m-2" type="submit">{{ article.titleCat }}</button>
+              {% endfor %} 
+            </div>
+
+            <a class="btn btn-primary" href={{ path('blogues_show', {'slug' : article.slug}) }}>
+            {# <div id="blue"></div> #} Plus
+            </a>
+          </div>
         </div>
-    {% endfor %}    
+      </div>
+      {% endfor %}    
+   
+
   </div>
+</div>
+
 </section>
 {% endblock %}

@@ -25,6 +25,10 @@ class Comment
     #[ORM\ManyToOne(targetEntity: Article::class, inversedBy: 'comments')]
     private $article;
 
+    #[ORM\ManyToOne(inversedBy: 'comments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,6 +70,10 @@ class Comment
         return $this;
     }
 
+public function __construct(Article $article)
+{
+    $this->article= $article;
+}
     public function getArticle(): ?Article
     {
         return $this->article;
@@ -81,5 +89,17 @@ class Comment
     public function __toString(): string
     {
       return $this->ContentCom;   
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
 }

@@ -27,21 +27,19 @@ img.col-4 { height:15rem;}
 <section>
 
   <div class="container">
-        <div class="row">
-            <div class="bg-light mt-10 p-4">
-            <div class="row">
-                <h1 class="col-10 float-start">{{ article.title }}</h1>
-            </div>
 
-              <br>
-              
-            <div class="row">
-              <div class="col-8 ">{{ article.body | markdown_to_html }}</div>
-                <img class="col-4 " src="{{ article.image }}" alt="Cours" >
-              </div>
+        <h2 class="col-10 ">{{ article.title }}</h2>
+
+        <div class="row  justify-content-center align-items-center">
+
+            <div class=" col-sm-12 col-md-6  h-100">
+                <p >{{ article.body | markdown_to_html }}</p>
+            </div >
+            <div class=" col-sm-12 col-md-6 pt-5">
+                <img class="w-100 "  src="{{ article.image }}" alt="Cours" >
             </div>
         </div>
-    </div>
+  </div>
 
 </section>
 

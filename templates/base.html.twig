@@ -14,7 +14,7 @@
         <link rel="icon" type="image/png" href="../build/img/tlogo.png" />
         <link rel="stylesheet" href="{{asset('css/accuiel.css')}}">
         <style>
-                @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css');
+                @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css');
                 @import url('https://bootswatch.com/5/pulse/bootstrap.min.css');
         </style>
     {% endblock %}
@@ -32,7 +32,7 @@
                             {# <img src="../build/img/llogo.png" alt="Hassoub logo"> #}
                         </a>
                     </h1>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler bg-white rounded" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -74,7 +74,7 @@
                                     src="https://ui-avatars.com/api/?name={{ app.user.email|url_encode }}&size=32&background=random"
                                     alt="{{ app.user.prenom }} Avatar">
                             </button>
-                            <ul class=" drop-nav dropdown-menu " aria-labelledby="dropdownMenu2">
+                            <ul class=" unorder drop-nav dropdown-menu " aria-labelledby="dropdownMenu2">
                                 {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
                                     <li>
                                         <a id="ddi" class="dropdown-item" href="{{ path('app_accueil', {
@@ -129,23 +129,23 @@
     <!-- Left -->
 
     <!-- Right -->
-    <div>
-      <a href="" class="me-4 link-secondary">
-        <i class="fab fa-facebook-f"></i>
+    <div class="d-flex justify-content-center justify-content-lg-between  flex-md-row fflex-sm-row  ">
+      <a href="#" class="me-4 link-secondary">
+       <i class="fab fa-facebook-square"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="#" class="me-4 link-secondary">
         <i class="fab fa-twitter"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="#" class="me-4 link-secondary">
         <i class="fab fa-google"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="#" class="me-4 link-secondary">
         <i class="fab fa-instagram"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="#" class="me-4 link-secondary">
         <i class="fab fa-linkedin"></i>
       </a>
-      <a href="" class="me-4 link-secondary">
+      <a href="#" class="me-4 link-secondary">
         <i class="fab fa-github"></i>
       </a>
     </div>
@@ -234,7 +234,7 @@
 
   <!-- Copyright -->
   <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.025);">
-    © 2021 Copyright:
+    © 2022 Copyright:
     <a class="text-reset fw-bold" href="https://mdbootstrap.com/">webtech.com</a>
   </div>
   <!-- Copyright -->

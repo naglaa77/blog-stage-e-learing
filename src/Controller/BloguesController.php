@@ -2,27 +2,28 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\ArticleRepository;
 use App\Entity\Article;
 use App\Entity\Comment;
 use App\Entity\Category;
 use App\Form\CommentType;
-use App\Repository\CategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Twig\Extra\Markdown\MarkdownExtension;
-use Symfony\Component\HttpFoundation\Request;
-use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityManager;
-use Symfony\Contracts\Translation\TranslatorInterface;
-use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
+use App\Repository\CategoryRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Twig\Extra\Markdown\MarkdownExtension;
+use Doctrine\Common\Collections\Collection;
+use Knp\Component\Pager\PaginatorInterface;
 use Doctrine\Bundle\DoctrineBundle\Registry;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Contracts\Translation\TranslatorInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 
 
@@ -30,10 +31,14 @@ use Doctrine\Persistence\ManagerRegistry as PersistenceManagerRegistry;
 class BloguesController extends AbstractController
 {
     #[Route('/blogues', name: 'app_blogues')]
-    public function index(ArticleRepository $articleRepository, ManagerRegistry $doctrine): Response
+    public function index(ArticleRepository $articleRepository, ManagerRegistry $doctrine,PaginatorInterface $paginator,Request $request): Response
     {
-        $articles = $articleRepository->findAll();
-
+        // $articles = $articleRepository->findAll();
+        $articles= $paginator->paginate(
+                $articleRepository->findAll(), /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                3 /*limit per page*/
+            );
         return $this->render('blogues/index.html.twig', [
             // 'controller_name' => 'BloguesController',
             'articles' => $articles

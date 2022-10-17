@@ -3,10 +3,6 @@
   margin-left: -5rem !important;
   margin-top: 1.1rem !important;
 }
-.navbar-toggler-icon {
-  border: 1px solid white;
-}
-
 section {
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -15,6 +11,7 @@ section {
 img {
   max-width: 100%;
 }
+
 section > div {
   display: flex;
   flex-direction: column;
@@ -38,7 +35,7 @@ section > div {
   section {
     padding-top: 2rem;
   }
-  .drop-nav{
+  .drop-nav {
     top: 66%;
     left: 72px;
   }
@@ -85,5 +82,9 @@ section > div {
   }
   .blog-h {
     font-size: 1.2rem;
+  }
+  .unorder {
+    position: absolute !important;
+    left: 5rem !important;
   }
 }

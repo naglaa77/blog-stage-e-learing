@@ -37,7 +37,7 @@
   <div class="row">
     
       {% for article in articles %}
-      <div  class="col-6 col-md-4 ">
+      <div  class=" main-div col-sm-12 col-md-6 col-lg-4 g-5 ">
         <div id="blog" class="card " style="width: 18rem;">
           <div id="cardbase" >
             <img src="{{ article.image }}" alt="blog image cap" class="card-img-top" style="width:100%">
@@ -45,7 +45,7 @@
                 <h3  class="card-title">{{ article.title }}</h3>
               <p class="card-text">{{ article.descriptionArt }}</p>
               {% for article in article.category %}
-                    <button class="btn btn-sm m-2" type="submit">{{ article.titleCat }}</button>
+                    <button class="btn btn-sm  cat-btn" type="submit">{{ article.titleCat }}</button>
               {% endfor %} 
             </div>
 
@@ -59,6 +59,9 @@
    
 
   </div>
+<div class="navigation mt-5" >
+    {{ knp_pagination_render(articles) }}
+</div>
 </div>
 
 </section>

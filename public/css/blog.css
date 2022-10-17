@@ -23,11 +23,12 @@
 .card-text {
   font-size: 0.92rem;
   color: #69636afa;
+  margin-bottom: 0;
 }
 .card-img-top {
   height: 51%;
 }
-.btn-primary {
+ .btn-primary {
   position: absolute;
   bottom: 1.5rem;
   left: 1rem;
@@ -37,4 +38,24 @@
   margin-bottom: 0;
   border-radius: 17px;
   font-size: 14px;
+} 
+.cat-btn {
+  padding: 0;
+  color: purple;
+}
+@media (max-width: 767px) {
+  .main-div {
+    width: 100%;
+  }
+  .card {
+    width: 100%;
+    margin: auto;
+  }
+  #cardbase {
+    width: 100%;
+  }
+  .navigation {
+    margin: auto;
+    width: 80%;
+  }
 }

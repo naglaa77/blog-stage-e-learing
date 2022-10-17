@@ -130,6 +130,9 @@
     "handcraftedinthealps/goodby-csv": {
         "version": "1.4.0"
     },
+    "knplabs/knp-paginator-bundle": {
+        "version": "v5.9.0"
+    },
     "laminas/laminas-code": {
         "version": "4.5.1"
     },

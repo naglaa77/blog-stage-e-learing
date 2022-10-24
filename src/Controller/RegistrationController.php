@@ -7,6 +7,7 @@ use App\Form\UserProfilType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Mime\Email;
 use App\Form\RegistrationFormType;
+use App\Form\UserPasswordType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -23,6 +24,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\HttpFoundation\Request as HttpFoundationRequest;
 
 class RegistrationController extends AbstractController
 {
@@ -56,7 +58,7 @@ class RegistrationController extends AbstractController
             $this->addFlash('success', 'Confirm your email at: '.$signatureComponents->getSignedUrl());
 
             $email = (new Email())
-                ->from('alienmailcarrier@example.com')
+                ->from('sama_hap@yahoo.com')
                 ->to($user->getEmail())
                 ->subject('Welcome to the Space Bar!')
                 ->text("Nice to meet you! ❤️");
@@ -96,7 +98,7 @@ class RegistrationController extends AbstractController
         return $this->redirectToRoute('app_login');
     }
 
-
+    /**modify le nom */
     #[Route('/profile/{id}', name: 'profil')]
     function profil($id,User $user,UserRepository $userRep,Request $request,EntityManagerInterface $em,UserPasswordHasherInterface $hasher) {
      
@@ -143,6 +145,30 @@ class RegistrationController extends AbstractController
         $this->addFlash('message','desabonner succes');
         
           return $this->redirectToRoute('app_accueil');
+    }
+  #[Route('/profile/edit-mot-pass/{id}', name: 'edit_password')]
+    function editPassword($id,User $user,UserRepository $userRep,HttpFoundationRequest $request,EntityManagerInterface $em,UserPasswordHasherInterface $encoder):response
+ {
+     
+    $user= $this->getUser();
+    $form = $this->createForm(UserPasswordType::class,$user);
+    $form->handleRequest($request);
+    if ($form->isSubmitted() && $form->isValid())  {
+     $old_password = $form->get('old_password')->getData();
+        if ($encoder->isPasswordValid($user, $old_password)) {
+
+            $new_password = $form->get('new_password')->getData();
+            $user->setPassword($password);
+                            //mettre à jour le mdp
+                            $em->flush();
+            $this->addFlash('success', 'Votre mot de passe à été modifié avec succée ');
+        }
+    }
+
+        $user = $form->getData();
+          return $this->render('registration/editPassword.html.twig',[
+'form' => $form->createView()
+]);
     }
 
 }

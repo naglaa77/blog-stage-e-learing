@@ -86,9 +86,12 @@
                                     <a id="ddi" class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
                                 </li>
                               <li>
-                                    <a id="ddi" class="dropdown-item" href="{{ path('profil',{'id':app.user.id}) }}">mon profile</a>
+                                    <a id="ddi" class="dropdown-item" href="{{ path('profil',{'id':app.user.id}) }}">change le nom</a>
                              <li>
-                                    <a id="ddi" class="dropdown-item" href="{{ path('delete_user',{'id':app.user.id}) }}">desabonner</a>
+                              <li>
+                                    <a id="ddi" class="dropdown-item" href="{{ path('edit_password',{'id':app.user.id}) }}">change mot de pass</a>
+                             <li>
+                                    <a id="ddi" class="dropdown-item" href="{{ path('delete_user',{'id':app.user.id}) }}">désabonner</a>
                               </li>
                               </li>
                           </ul>

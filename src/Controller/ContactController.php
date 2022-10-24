@@ -56,8 +56,8 @@ class ContactController extends AbstractController
 
             //mailer
             $email = (new Email())
-                ->from('lubna.akash@univ-montp3.fr')
-                ->to(new Address('lubna.altungi@gmail.com'))
+                ->from('naglaafouz4@ygmail.com')
+                ->to(new Address('naglaafouz4@ygmail.com'))
                 ->subject('You got mail!')
                 ->text('Sending emails is fun again!')
                 ->html('<p>See Twig integration for better HTML integration!</p>');
